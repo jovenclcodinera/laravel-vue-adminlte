@@ -17,8 +17,12 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('type')->default("user");
+            $table->mediumText("bio")->nullable();
+            $table->string('photo')
+                ->default('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png')
+                ->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
